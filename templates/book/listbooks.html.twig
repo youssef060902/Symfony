@@ -1,0 +1,24 @@
+<table border="1">
+
+<tr>
+<th>Id</th>
+<th>Title</th>
+<th>publication_date</th>
+<th>enabled</th>
+<th>author</th>
+
+</tr>
+{% for book in books %}
+<tr>
+<td> {{book.id}} </td>
+<td> {{book.Title}} </td>
+<td> {{book.publicationDate|date('Y-m-d') }} </td>
+<td> {{book.enabled}} </td>
+<td> {{book.author.username}} </td>
+<td> <a href="{{path('show_book',{'id':book.id})}}"> Details</td>
+<td> <a href="{{path('delete_book',{'id':book.id})}}"> Delete</td>
+<td> <a href="{{path('edit_book',{'id':book.id})}}"> Edit</td>
+</tr>
+
+{% endfor %}
+</table>

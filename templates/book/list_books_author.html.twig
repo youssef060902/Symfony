@@ -1,0 +1,23 @@
+<h1>Livres de l'Auteur</h1>
+
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Publication Date</th>
+        <th>Enabled</th>
+    </tr>
+
+    {% for book in books %}
+    <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.publicationDate|date('Y-m-d') }}</td>
+        <td>{{ book.enabled ? 'Yes' : 'No' }}</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="3">Aucun livre trouvé pour cet auteur.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{{ path('listauthors') }}">Retour à la liste des auteurs</a>

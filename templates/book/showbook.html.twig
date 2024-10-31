@@ -1,0 +1,20 @@
+<table border="1">
+<tr>
+<th>Id</th>
+<th>Title</th>
+<th>publication_date</th>
+<th>enabled</th>
+<th>author</th>
+
+</tr>
+<tr>
+<td> {{book.id}} </td>
+<td> {{book.Title}} </td>
+<td> {{ book.publicationDate|date('Y-m-d') }} </td>
+<td> {{book.enabled}} </td>
+<td> {{book.author.username}} </td>
+
+</tr>
+
+
+</table>

@@ -1,0 +1,9 @@
+<h1>Emails des Auteurs</h1>
+
+<ul>
+    {% for email in emails %}
+        <li>{{ email.email }}</li>
+    {% else %}
+        <li>Aucun auteur trouvé.</li>
+    {% endfor %}
+</ul>

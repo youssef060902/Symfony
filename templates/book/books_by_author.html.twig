@@ -1,0 +1,31 @@
+<h1>Livres écrits par {{author.username }}</h1>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Publication Date</th>
+        <th>Enabled</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for book in books %}
+    <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.publicationDate|date('Y-m-d') }}</td>
+        <td>{{ book.enabled ? 'Yes' : 'No' }}</td>
+        <td>
+            <a href="{{ path('show_book', {'id': book.id}) }}">Details</a> |
+            <a href="{{ path('edit_book', {'id': book.id}) }}">Edit</a> |
+            <a href="{{ path('delete_book', {'id': book.id}) }}" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="5">No books found for this author.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{{ path('listauthors') }}">Retour à la liste des auteurs</a>

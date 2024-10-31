@@ -1,0 +1,34 @@
+<h1>Recherche d'Auteurs par Nom</h1>
+
+<form method="get" action="{{ path('search_author') }}">
+    <input type="text" name="search" placeholder="Entrez le nom de l'auteur" value="{{ app.request.get('search') }}">
+    <button type="submit">Rechercher</button>
+</form>
+
+<h2>Résultats</h2>
+
+{% if authors is not empty %}
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        {% for author in authors %}
+        <tr>
+            <td>{{ author.id }}</td>
+            <td>{{ author.username }}</td>
+            <td>{{ author.email }}</td>
+            <td>
+                <a href="{{ path('show_author', {'id': author.id}) }}">Details</a> |
+                <a href="{{ path('delete_author', {'id': author.id}) }}" onclick="return confirm('Are you sure?')">Delete</a> |
+                <a href="{{ path('edit_author', {'id': author.id}) }}">Edit</a> |
+                <a href="{{ path('books_by_author', {'id': author.id}) }}">List des books</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>Aucun auteur trouvé.</p>
+{% endif %}
